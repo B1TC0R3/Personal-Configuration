@@ -30,6 +30,16 @@ alias ls="lsd"
 alias tree="lsd --tree"
 alias bucfg="/home/thomas/Desktop/config_repo/backup_config.sh"
 
+# Git alias
+alias commit="git commit -m"
+alias push="git push"
+alias pull="git pull"
+alias add="git add"
+
+# ls when cd-ing into a new dir
 chpwd() {
 	lsd
 }
+
+# Start neofetch only first zsh launch
+[[ -f /tmp/nf_flag ]] || neofetch && touch /tmp/nf_flag
