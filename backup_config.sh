@@ -4,7 +4,7 @@
 ssh_key=/home/thomas/.ssh/git.ssh
 
 # Git configuration
-repository=$1
+repository=/home/thomas/Desktop/config_repo
 remote=origin
 branch=main
 
