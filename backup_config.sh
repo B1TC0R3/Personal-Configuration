@@ -24,11 +24,6 @@ print_help () {
 	exit
 }
 
-authenticate () {
-	eval "$(ssh-agent -s)" &>/dev/null
-	ssh-add $ssh_key
-}
-
 # Check if script is configured
 [[ -z $ssh_key ]] && echo -e "\e[31mError:\e[39m Ssh-key not configured!" && print_help
 [[ -z $repository ]] && echo -e "\e[31mError:\39m Repository not configured!" && print_help
@@ -42,8 +37,9 @@ for elem in ${files[@]}; do
 done
 echo -e "\e[32mCopying finished!\e[39m"
 
-echo "Checking for ssh-key..."
-ssh -T git@github.com || authenticate
+echo "Authenticating ssh-key..."
+eval "$(ssh-agent -s)" &>/dev/null
+ssh-add $ssh_key
 echo -e "\e[32mKey accepted!\e[39m"
 
 git -C $repository add .
