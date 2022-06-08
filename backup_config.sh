@@ -1,30 +1,40 @@
 #!/bin/bash
 
 # Path to ssh-key for git repo
+# eg.: ~/.ssh/git.ssh
 ssh_key=$HOME/.ssh/git.ssh
 
 # Git configuration
+# Set 'repository' to the path of your backup-git-repository
 repository=$HOME/Desktop/config_repo
 remote=origin
 branch=main
 
 # Backup-files
 files=(
-/home/thomas/.config/nvim/init.vim
-/home/thomas/.config/ranger/rc.conf
-/home/thomas/.config/picom/config
-/home/thomas/.config/neofetch/config.conf
-/home/thomas/.zshrc
-/home/thomas/.p10k.zsh
-/etc/xdg/awesome/rc.lua
-/usr/share/awesome/themes/b1tc0r3/theme.lua
+# All files go here
 )
 
+print_help () {
+	echo "Please configure the script first!"
+	echo "You can do so by opening it in any text-editor."
+	echo "Make sure both variables are set accordingly to your setup:"
+	echo -e "\t- ssh-key"
+	echo -e "\t- repository"
+	exit
+}
+
+authenticate () {
+	eval "$(ssh-agent -s)" &>/dev/null
+	ssh-add $ssh_key
+}
+
 # Check if script is configured
-[[ -z $ssh_key ]] && echo -e "\e[31mError:\e[ Ssh-key not configured!" && exit
-[[ -z $repository ]] && echo -e "\e[31mError:\39m Repository not configured!" && exit
-[[ -z $remote ]] && echo -e "\e[31mError:\39m Remote not defined!" && exit
-[[ -z $branch ]] && echo -e "\e[Error:\39m Branch not defined!" && exit
+[[ -z $ssh_key ]] && echo -e "\e[31mError:\e[39m Ssh-key not configured!" && print_help
+[[ -z $repository ]] && echo -e "\e[31mError:\39m Repository not configured!" && print_help
+[[ -z $remote ]] && echo -e "\e[31mError:\39m Remote not defined!" && print_help
+[[ -z $branch ]] && echo -e "\e[Error:\39m Branch not defined!" && print_help
+
 
 echo "Copying files..."
 for elem in ${files[@]}; do
@@ -33,7 +43,7 @@ done
 echo -e "\e[32mCopying finished!\e[39m"
 
 echo "Checking for ssh-key..."
-ssh -T git@github.com || eval "$(ssh-agent -s)" &>/dev/null && ssh-add $ssh_key
+ssh -T git@github.com || authenticate
 echo -e "\e[32mKey accepted!\e[39m"
 
 git -C $repository add .
