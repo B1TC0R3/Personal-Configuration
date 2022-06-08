@@ -4,6 +4,7 @@
 ssh_key=/home/thomas/.ssh/git.ssh
 
 # Git configuration
+repository=$1
 remote=origin
 branch=main
 
@@ -29,8 +30,8 @@ echo "Checking for ssh-key..."
 ssh -T git@github.com || eval "$(ssh-agent -s)" &>/dev/null && ssh-add $ssh_key
 echo -e "\e[32mKey accepted!\e[39m"
 
-git -C $1 add .
-git -C $1 commit -m "Automated backup at: `date`"
+git -C $repository add .
+git -C $repository commit -m "Automated backup at: `date`"
 
 echo "Uploading files to git..."
-git -C $1 push $remote:$branch && echo -e "\e[32mFiles uploaded!\e[39m"
+git -C $repository push $remote:$branch && echo -e "\e[32mFiles uploaded!\e[39m"
