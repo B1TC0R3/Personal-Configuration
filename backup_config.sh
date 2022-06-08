@@ -43,7 +43,7 @@ done
 echo -e "\e[32mCopying finished!\e[39m"
 
 echo "Checking for ssh-key..."
-[[ ! -z $( ssh -T git@github.com | grep (publickey) ) ]] || authenticate
+[[ ! -z $( ssh -T git@github.com | grep "(publickey)" ) ]] || authenticate
 echo -e "\e[32mKey accepted!\e[39m"
 
 git -C $repository add .
