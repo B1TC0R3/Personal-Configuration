@@ -13,12 +13,12 @@ files=(
 
 echo "Copying files..."
 for elem in ${files[@]}; do
-	install -DC $elem $1/$elem 1>/dev/null && echo -e "Backed up(\e[36m`date`\e[39m): $elem"
+	install -DC $elem $1/$elem 1>/dev/null && echo -e "Backed up: \e[36m$elem\e[39m)"
 done
-echo -e "Copying finished (\e[36m`date`\e[39m)!"
+echo -e "\e[32mCopying finished!\e[39m"
 
 git add $1
 git commit -m "Automated backup at: `date`"
 
 echo "Uploading files to git..."
-git push &>/dev/null && echo "Files uploaded!"
+git push &>/dev/null && echo -e "\e[32mFiles uploaded!\e[39m"
