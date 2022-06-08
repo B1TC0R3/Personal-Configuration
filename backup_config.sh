@@ -26,10 +26,12 @@ done
 echo -e "\e[32mCopying finished!\e[39m"
 
 echo "Checking for ssh-key..."
-ssh -T git@github.com &>/dev/null || eval"$(ssh-agent -s)" &>/dev/null && ssh-add $ssh_key
+ssh -T git@github.com || eval "$(ssh-agent -s)" &>/dev/null && ssh-add $ssh_key
 echo -e "\e[32mKey accepted!\e[39m"
 
-git add $1
+cd $1
+
+git add .
 git commit -m "Automated backup at: `date`"
 
 echo "Uploading files to git..."
