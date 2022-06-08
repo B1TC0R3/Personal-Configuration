@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Path to ssh-key for git repo
+ssh_key=/home/thomas/.ssh/git.ssh
+
+# Git configuration
+remote=origin
+branch=main
+
+# Backup-files
 files=(
 /home/thomas/.config/nvim/init.vim
 /home/thomas/.config/ranger/rc.conf
@@ -17,8 +25,12 @@ for elem in ${files[@]}; do
 done
 echo -e "\e[32mCopying finished!\e[39m"
 
+echo "Checking for ssh-key..."
+ssh -T git@github.com || eval"$(ssh-agent -s)" &>/dev/null && ssh-add $ssh_key
+echo -e "\e[32mKey accepted!\e[39m"
+
 git add $1
 git commit -m "Automated backup at: `date`"
 
 echo "Uploading files to git..."
-git push &>/dev/null && echo -e "\e[32mFiles uploaded!\e[39m"
+git push origin:$branch &>/dev/null && echo -e "\e[32mFiles uploaded!\e[39m"
