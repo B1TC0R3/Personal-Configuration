@@ -17,10 +17,8 @@ for elem in ${files[@]}; do
 done
 echo -e "Copying finished (\e[36m`date`\e[39m)!"
 
-echo "Commiting changes..."
 git add $1
 git commit -m "Automated backup at: `date`"
-echo -e "Changes commited (\e[36m`date`\e[39m)"
 
 echo "Uploading files to git..."
 git push &>/dev/null && echo "Files uploaded!"
