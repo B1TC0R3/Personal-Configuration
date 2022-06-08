@@ -40,4 +40,5 @@ git -C $repository add .
 git -C $repository commit -m "Automated backup at: `date`"
 
 echo "Uploading files to git..."
+git -C $repository pull $remote $branch
 git -C $repository push $remote $branch && echo -e "\e[32mFiles uploaded!\e[39m"
