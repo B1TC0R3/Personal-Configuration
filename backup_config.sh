@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Path to ssh-key for git repo
-ssh_key=/home/thomas/.ssh/git.ssh
+ssh_key=$HOME/.ssh/git.ssh
 
 # Git configuration
-repository=/home/thomas/Desktop/config_repo
+repository=$HOME/Desktop/config_repo
 remote=origin
 branch=main
 
@@ -19,6 +19,12 @@ files=(
 /etc/xdg/awesome/rc.lua
 /usr/share/awesome/themes/b1tc0r3/theme.lua
 )
+
+# Check if script is configured
+[[ -z $ssh_key ]] && echo -e "\e[31mError:\e[ Ssh-key not configured!" && exit
+[[ -z $repository ]] && echo -e "\e[31mError:\39m Repository not configured!" && exit
+[[ -z $remote ]] && echo -e "\e[31mError:\39m Remote not defined!" && exit
+[[ -z $branch ]] && echo -e "\e[Error:\39m Branch not defined!" && exit
 
 echo "Copying files..."
 for elem in ${files[@]}; do
