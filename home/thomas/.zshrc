@@ -28,6 +28,7 @@ alias start-ssh="ssh-agent zsh && ssh-add ~/.ssh/git.ssh"
 alias ionos-ssh="ssh -l u108513126 access912333694.webspace-data.io"
 alias ls="lsd"
 alias tree="lsd --tree"
+alias bucfg="/home/thomas/Desktop/config_repo/backup_config.sh /home/thomas/Desktop/config_repo"
 
 chpwd() {
 	lsd
