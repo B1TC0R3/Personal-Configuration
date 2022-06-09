@@ -12,7 +12,14 @@ branch=main
 
 # Backup-files
 files=(
-# All files go here
+/home/thomas/.vimrc
+/home/thomas/.zshrc
+/home/thomas/.p10k.zsh
+/home/thomas/.config/neofetch/config.conf
+/home/thomas/.config/ranger/rc.conf
+/home/thomas/.config/picom/config
+/etc/xdg/awesome/rc.lua
+/usr/share/awesome/themes/b1tc0r3/theme.lua
 )
 
 print_help () {
