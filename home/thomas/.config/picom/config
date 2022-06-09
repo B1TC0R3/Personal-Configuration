@@ -133,8 +133,6 @@ active-opacity = 1.0
 # example:
 #    opacity-rule = [ "80:class_g = 'URxvt'" ];
 #
-opacity-rule = [ "70:class_g = 'kitty'" ];
-
 
 #################################
 #           Corners             #
