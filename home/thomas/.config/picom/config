@@ -12,7 +12,7 @@ shadow = false;
 
 # The blur radius for shadows, in pixels. (defaults to 12)
 # shadow-radius = 12
-shadow-radius = 15;
+shadow-radius = 0;
 
 # The opacity of shadows. (0.0 - 1.0, defaults to 0.75)
 # shadow-opacity = .75
@@ -141,7 +141,7 @@ active-opacity = 1.0
 # Sets the radius of rounded window corners. When > 0, the compositor will
 # round the corners of windows. Does not interact well with
 # `transparent-clipping`.
-corner-radius = 10
+# corner-radius = 10
 
 # Exclude conditions for rounded corners.
 # rounded-corners-exclude = [
