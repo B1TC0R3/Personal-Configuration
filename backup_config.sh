@@ -15,6 +15,7 @@ files=(
 /home/thomas/.vimrc
 /home/thomas/.zshrc
 /home/thomas/.p10k.zsh
+/home/thomas/.config/nvim/init.vim
 /home/thomas/.config/neofetch/config.conf
 /home/thomas/.config/ranger/rc.conf
 /home/thomas/.config/picom/config
