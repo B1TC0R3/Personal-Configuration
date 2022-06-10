@@ -213,6 +213,11 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = tasklist_buttons
     }
 
+    -- Configure wibar
+    beautiful.wibar_opacity = 0.8
+    beautiful.wibar_border_width = 5
+    beautiful.wibar_height = 25
+
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
