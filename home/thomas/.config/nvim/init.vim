@@ -15,16 +15,8 @@ Plug 'mhinz/vim-startify'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
-Plug 'jayli/vim-easycomplete'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'github/copilot.vim'
 call plug#end()
-
-" UltiSnips config
-let g:UltiSnipsSnippetDir=$HOME.".vim/plugged/vim-snippets/snippets"
-let g:UltiSnipsJumpForwardTrigger="<C-tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-let g:UltiSnipsEditSplit="vertical"
 
 " Start NERDTree and put the cursor back in the other window.
 autocmd VimEnter * NERDTree | wincmd p
@@ -37,5 +29,5 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-let g:airline_theme="<google_dark>"
+let g:airline_theme="google_dark"
 hi Normal ctermbg=235
