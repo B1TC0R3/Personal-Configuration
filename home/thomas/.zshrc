@@ -42,4 +42,4 @@ chpwd() {
 }
 
 # Start neofetch only first zsh launch
-[[ -f /tmp/nf_flag ]] || neofetch && touch /tmp/nf_flag
+# [[ -f /tmp/nf_flag ]] || neofetch && touch /tmp/nf_flag
