@@ -35,11 +35,9 @@ alias commit="git commit -m"
 alias push="git push"
 alias pull="git pull"
 alias add="git add"
+alias status="git status"
 
 # ls when cd-ing into a new dir
 chpwd() {
 	lsd
 }
-
-# Start neofetch only first zsh launch
-# [[ -f /tmp/nf_flag ]] || neofetch && touch /tmp/nf_flag
